@@ -1,10 +1,12 @@
-import Competitions from "../components/Competitions";
+import Competitions from "./components/Competitions";
 import "./App.css";
+
+import Header from "./components/Header";
 
 function App() {
   return (
     <>
-      <h1 className="text-4xl font-bold text-blue-400">Hello TailWind</h1>
+      <Header />
       <Competitions />
     </>
   );
