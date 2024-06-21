@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import fetchCompetitions from "../api/competitionApi";
-import { useNavigate } from "react-router-dom";
 
-const Competitions = () => {
+const MatchResults = () => {
   const [matches, setMatches] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMatches = async () => {
       try {
         const response = await fetchCompetitions();
-        setMatches(response.matches);
+        setMatches(
+          response.matches.filter((match) => match.status === "FINISHED")
+        );
       } catch (error) {
         console.error("Error fetching matches:", error);
       }
@@ -32,33 +32,18 @@ const Competitions = () => {
     return formattedDate.replace(day, `${day}${suffix}`);
   };
 
-  const formatTime = (timeStr) => {
-    const date = new Date(timeStr);
-    let hours = date.getHours();
-    const minutes = date.getMinutes().toString().padStart(2, "0");
-    hours = hours.toString().padStart(2, "0");
-
-    return `${hours}:${minutes}`;
-  };
-
-  const handleMatchClick = (match) => {
-    navigate(`/guess/${match.id}`);
-  };
-
   const groupedMatches = matches.reduce((acc, match) => {
     const date = match.utcDate.split("T")[0];
     if (!acc[date]) {
       acc[date] = [];
     }
-
     acc[date].push(match);
     return acc;
   }, {});
 
   return (
-    <div className="container mx-auto py-6 bg-gray-100  ">
-      <h2 className="text-2xl font-bold mb-4 text-center">Upcoming Matches</h2>
-
+    <div className="container mx-auto py-6 bg-gray-100">
+      <h2 className="text-2xl font-bold mb-4 text-center">Match Results</h2>
       <div>
         {Object.keys(groupedMatches).map((date) => (
           <div key={date} className="mb-6">
@@ -69,7 +54,6 @@ const Competitions = () => {
               <div
                 key={match.id}
                 className="bg-white rounded-lg shadow-md p-4 w-3/4 mb-2 mx-auto"
-                onClick={() => handleMatchClick(match)}
               >
                 <div className="flex justify-between items-center">
                   <div className="flex items-center">
@@ -84,21 +68,13 @@ const Competitions = () => {
                   </div>
                   <div className="flex flex-col items-center mx-2 min-w-[60px]">
                     <span className="font-bold">
-                      {match.status === "SCHEDULED" ||
-                      match.score.fullTime.home === null ||
-                      match.score.fullTime.away === null
-                        ? formatTime(match.utcDate)
-                        : `${match.score.fullTime.home} - ${match.score.fullTime.away}`}
+                      {match.score.fullTime.home} - {match.score.fullTime.away}
                     </span>
-                    {match.status !== "FINISHED" && (
-                      <span className="text-xs text-gray-500">Guess</span>
-                    )}
                   </div>
                   <div className="flex items-center">
                     <span className="font-semibold min-w-[100px] text-right">
                       {match.awayTeam.name}
                     </span>
-
                     <img
                       src={`https://crests.football-data.org/${match.awayTeam.id}.svg`}
                       alt={match.awayTeam.name}
@@ -115,4 +91,4 @@ const Competitions = () => {
   );
 };
 
-export default Competitions;
+export default MatchResults;

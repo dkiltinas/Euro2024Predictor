@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <header>
@@ -30,10 +32,28 @@ const Header = () => {
             <div className="flex-none hidden lg:block">
               <ul className="menu menu-horizontal">
                 <li>
-                  <a>My Guesses</a>
+                  <Link
+                    to="/guesses"
+                    className="text-white hover:bg-blue-600 px-4 py-2 rounded"
+                  >
+                    My Guesses
+                  </Link>
                 </li>
                 <li>
-                  <a>Match Results</a>
+                  <Link
+                    to="/results"
+                    className="text-white hover:bg-blue-600 px-4 py-2 rounded"
+                  >
+                    Match Results
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/"
+                    className="text-white hover:bg-blue-600 px-4 py-2 rounded"
+                  >
+                    Upcoming Matches
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -47,10 +67,19 @@ const Header = () => {
           ></label>
           <ul className="menu p-4 w-80 min-h-full bg-base-200">
             <li>
-              <a>My Guesses</a>
+              <Link to="/guesses" className="block p-2 hover:bg-gray-200">
+                My Guesses
+              </Link>
             </li>
             <li>
-              <a>Match Results</a>
+              <Link to="/results" className="block p-2 hover:bg-gray-200">
+                Match Results
+              </Link>
+            </li>
+            <li>
+              <Link to="/" className="block p-2 hover:bg-gray-200">
+                Upcoming Matches
+              </Link>
             </li>
           </ul>
         </div>
