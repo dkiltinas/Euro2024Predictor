@@ -10,7 +10,10 @@ const Competitions = () => {
     const fetchMatches = async () => {
       try {
         const response = await fetchCompetitions();
-        setMatches(response.matches);
+        const upcomingMatches = response.matches.filter(
+          (match) => match.status !== "FINISHED"
+        );
+        setMatches(upcomingMatches);
       } catch (error) {
         console.error("Error fetching matches:", error);
       }
