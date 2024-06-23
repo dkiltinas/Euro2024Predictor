@@ -47,8 +47,8 @@ const GuessPage = () => {
   return (
     <div className="container mx-auto py-6">
       <h2 className="text-2xl font-bold mb-4 text-center">Make a Guess</h2>
-      <div className="bg-white rounded-lg shadow-md p-4 w-3/4 mx-auto">
-        <div className="flex justify-between items-center mb-4">
+      <div className="bg-white rounded-lg shadow-md p-6 w-11/12 lg:w-3/4 mx-auto">
+        <div className="flex justify-between items-center mb-6">
           <div className="flex items-center">
             <img
               src={`https://crests.football-data.org/${match.homeTeam.id}.svg`}
@@ -63,31 +63,31 @@ const GuessPage = () => {
             <img
               src={`https://crests.football-data.org/${match.awayTeam.id}.svg`}
               alt={match.awayTeam.name}
-              className="w-8 h-8 ml-2"
+              className="w-8 h-8 ml-2 "
             />
           </div>
         </div>
         <div className="flex justify-around">
           <button
-            className={`p-2 ${
+            className={`p-3 rounded-lg ${
               guess === "home" ? "bg-blue-500 text-white" : "bg-gray-200"
-            }`}
+            } hover:bg-blue-400 transition duration-200`}
             onClick={() => setGuess("home")}
           >
             {match.homeTeam.name} Wins
           </button>
           <button
-            className={`p-2 ${
+            className={`p-3 rounded-lg ${
               guess === "draw" ? "bg-blue-500 text-white" : "bg-gray-200"
-            }`}
+            } hover:bg-blue-400 transition duration-200`}
             onClick={() => setGuess("draw")}
           >
             Draw
           </button>
           <button
-            className={`p-2 ${
+            className={`p-3 rounded-lg ${
               guess === "away" ? "bg-blue-500 text-white" : "bg-gray-200"
-            }`}
+            } hover:bg-blue-400 transition duration-200`}
             onClick={() => setGuess("away")}
           >
             {match.awayTeam.name} Wins
@@ -95,7 +95,7 @@ const GuessPage = () => {
         </div>
         <div className="mt-4 text-center">
           <button
-            className="bg-green-500 text-white p-2 rounded"
+            className="bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition duration-200 ml-4"
             onClick={handleSaveGuess}
           >
             Save Guess

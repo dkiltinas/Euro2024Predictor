@@ -71,10 +71,11 @@ const Competitions = () => {
             {groupedMatches[date].map((match) => (
               <div
                 key={match.id}
-                className="bg-white rounded-lg shadow-md p-4 w-3/4 mb-2 mx-auto"
+                className="bg-white rounded-lg shadow-md p-4 sm:w-3/4 mb-2 mx-auto group cursor-pointer"
                 onClick={() => handleMatchClick(match)}
               >
-                <div className="flex justify-between items-center">
+                {" "}
+                <div className="flex justify-between items-center ">
                   <div className="flex items-center">
                     <img
                       src={`https://crests.football-data.org/${match.homeTeam.id}.svg`}
@@ -94,7 +95,9 @@ const Competitions = () => {
                         : `${match.score.fullTime.home} - ${match.score.fullTime.away}`}
                     </span>
                     {match.status !== "FINISHED" && (
-                      <span className="text-xs text-gray-500">Guess</span>
+                      <span className="text-sm text-gray-500 group-hover:text-yellow-500">
+                        Guess
+                      </span>
                     )}
                   </div>
                   <div className="flex items-center">

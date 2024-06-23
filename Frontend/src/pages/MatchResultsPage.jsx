@@ -53,7 +53,7 @@ const MatchResults = () => {
             {groupedMatches[date].map((match) => (
               <div
                 key={match.id}
-                className="bg-white rounded-lg shadow-md p-4 w-3/4 mb-2 mx-auto"
+                className=" sm:bg-white rounded-lg shadow-md p-4 sm:w-3/4 mb-2 mx-auto"
               >
                 <div className="flex justify-between items-center">
                   <div className="flex items-center">

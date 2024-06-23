@@ -15,7 +15,7 @@ const Hero = ({ backgroundImage, title, subtitle, onClick }) => {
         <p className="mt-4 text-lg md:text-xl">{subtitle}</p>
         <Link to={"/"}>
           <button
-            className="mt-52 px-32 py-3  bg-yellow-500 text-black font-semibold rounded hover:bg-yellow-600 -z-0"
+            className="mt-24  sm:mt-52 px-32 py-3 relative  bg-yellow-500 text-black font-semibold rounded hover:bg-yellow-600 -z-2"
             onClick={onClick}
           >
             Make a Guess!

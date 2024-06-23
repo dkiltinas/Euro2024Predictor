@@ -68,19 +68,19 @@ const Header = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu p-4 w-80 min-h-full bg-base-200 relative max-w-lg">
+          <ul className="menu p-4 w-80 min-h-full bg-base-200 relative max-w-lg text-base font-semibold">
             <li>
-              <Link to="/guesses" className="block p-2 hover:bg-gray-200">
+              <Link to="/guesses" className="block p-4 hover:bg-yellow-500">
                 My Guesses
               </Link>
             </li>
             <li>
-              <Link to="/results" className="block p-2 hover:bg-gray-200">
+              <Link to="/results" className="block p-4 hover:bg-yellow-500">
                 Match Results
               </Link>
             </li>
             <li>
-              <Link to="/" className="block p-2 hover:bg-gray-200">
+              <Link to="/" className="block p-4 hover:bg-yellow-500">
                 Upcoming Matches
               </Link>
             </li>
