@@ -95,7 +95,7 @@ const GuessPage = () => {
         </div>
         <div className="mt-4 text-center">
           <button
-            className="bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition duration-200 ml-4"
+            className="bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition duration-200"
             onClick={handleSaveGuess}
           >
             Save Guess

@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 const Competitions = () => {
   const [matches, setMatches] = useState([]);
   const navigate = useNavigate();
+  const noImage =
+    "https://www.citypng.com/public/uploads/preview/outline-black-question-mark-symbol-icon-png-7017516949635410rg08c9rpe.png";
 
   useEffect(() => {
     const fetchMatches = async () => {
@@ -80,6 +82,10 @@ const Competitions = () => {
                     <img
                       src={`https://crests.football-data.org/${match.homeTeam.id}.svg`}
                       alt={match.homeTeam.name}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = noImage;
+                      }}
                       className="w-8 h-8 mr-2"
                     />
                     <span className="font-semibold min-w-[100px] text-left">
@@ -108,6 +114,10 @@ const Competitions = () => {
                     <img
                       src={`https://crests.football-data.org/${match.awayTeam.id}.svg`}
                       alt={match.awayTeam.name}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = noImage;
+                      }}
                       className="w-8 h-8 ml-2"
                     />
                   </div>

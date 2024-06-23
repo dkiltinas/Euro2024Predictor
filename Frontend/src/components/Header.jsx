@@ -7,9 +7,6 @@ const Header = () => {
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
           <div className="w-full navbar bg-customBlue">
-            <Link to="/">
-              <img src="" alt="logo" className="w-22 h-28" />
-            </Link>
             <div className="flex-none lg:hidden">
               <label
                 htmlFor="my-drawer-3"
@@ -31,7 +28,16 @@ const Header = () => {
                 </svg>
               </label>
             </div>
+            <Link to="/">
+              <div>
+                <h2 className="h-20 w-34 text-3xl font-bold text-slate-200 mt-8 pl-8">
+                  EuroGuess
+                </h2>
+              </div>
+            </Link>
+
             <div className="flex-1 px-2 mx-2 "></div>
+
             <div className="flex-none hidden lg:block">
               <ul className="menu menu-horizontal ">
                 <li>
