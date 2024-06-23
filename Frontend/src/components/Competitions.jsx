@@ -59,7 +59,7 @@ const Competitions = () => {
   }, {});
 
   return (
-    <div className="container mx-auto py-6 bg-gray-100  ">
+    <div className="container mx-auto py-6 bg-gray-100 ">
       <h2 className="text-2xl font-bold mb-4 text-center">Upcoming Matches</h2>
 
       <div>
