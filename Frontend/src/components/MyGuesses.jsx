@@ -73,7 +73,7 @@ const MyGuesses = () => {
           guesses.map((guess, index) => {
             const match = getMatchDetails(guess.matchId);
             return (
-              <div key={index} className="mb-4">
+              <div key={index} className="mb-6 border-b-2 border-gray-200 pb-4">
                 {match ? (
                   <>
                     <div className="flex items-center justify-between">
@@ -87,7 +87,7 @@ const MyGuesses = () => {
                           {match.homeTeam.name}
                         </span>
                       </div>
-                      <span>vs</span>
+                      <span className="text-gray-600 mx-2">vs</span>
                       <div className="flex items-center">
                         <span className="font-semibold">
                           {match.awayTeam.name}
@@ -99,50 +99,57 @@ const MyGuesses = () => {
                         />
                       </div>
                     </div>
-                    <p>
+                    <p className="my-2">
                       Result:{" "}
                       {match.status === "FINISHED"
                         ? `${match.score.fullTime.home} - ${match.score.fullTime.away}`
                         : "Not played yet"}
                     </p>
+                    <p className="my-2">
+                      Guess:{" "}
+                      {match ? getTeamName(match, guess.guess) : guess.guess}
+                    </p>
+
+                    <div className="flex justify-center">
+                      <button
+                        className={`bg-yellow-500 text-white p-2 rounded mr-2 ${
+                          match &&
+                          (match.status === "FINISHED" ||
+                            match.status === "IN_PLAY")
+                            ? "opacity-50 cursor-not-allowed"
+                            : ""
+                        }`}
+                        onClick={() => handleEdit(guess.matchId)}
+                        disabled={
+                          match &&
+                          (match.status === "FINISHED" ||
+                            match.status === "IN_PLAY")
+                        }
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className={`bg-red-500 text-white p-2 rounded ${
+                          match &&
+                          (match.status === "FINISHED" ||
+                            match.status === "IN_PLAY")
+                            ? "opacity-50 cursor-not-allowed"
+                            : ""
+                        }`}
+                        onClick={() => handleDelete(guess.matchId)}
+                        disabled={
+                          match &&
+                          (match.status === "FINISHED" ||
+                            match.status === "IN_PLAY")
+                        }
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </>
                 ) : (
                   <p>Match ID: {guess.matchId}</p>
                 )}
-                <p>
-                  Guess: {match ? getTeamName(match, guess.guess) : guess.guess}
-                </p>
-
-                <button
-                  className={`bg-yellow-500 text-white p-2 rounded mr-2 ${
-                    match &&
-                    (match.status === "FINISHED" || match.status === "IN_PLAY")
-                      ? "opacity-50 cursor-not-allowed"
-                      : ""
-                  }`}
-                  onClick={() => handleEdit(guess.matchId)}
-                  disabled={
-                    match &&
-                    (match.status === "FINISHED" || match.status === "IN_PLAY")
-                  }
-                >
-                  Edit
-                </button>
-                <button
-                  className={`bg-red-500 text-white p-2 rounded ${
-                    match &&
-                    (match.status === "FINISHED" || match.status === "IN_PLAY")
-                      ? "opacity-50 cursor-not-allowed"
-                      : ""
-                  }`}
-                  onClick={() => handleDelete(guess.matchId)}
-                  disabled={
-                    match &&
-                    (match.status === "FINISHED" || match.status === "IN_PLAY")
-                  }
-                >
-                  Delete
-                </button>
               </div>
             );
           })

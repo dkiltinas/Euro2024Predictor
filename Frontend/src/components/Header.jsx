@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header>
-      <div className="drawer">
+      <div className="drawer z-10 h-24">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
-          <div className="w-full navbar bg-blue-400">
+          <div className="w-full navbar bg-customBlue">
+            <Link to="/">
+              <img src="" alt="logo" className="w-22 h-28" />
+            </Link>
             <div className="flex-none lg:hidden">
               <label
                 htmlFor="my-drawer-3"
@@ -30,7 +33,7 @@ const Header = () => {
             </div>
             <div className="flex-1 px-2 mx-2 "></div>
             <div className="flex-none hidden lg:block">
-              <ul className="menu menu-horizontal">
+              <ul className="menu menu-horizontal ">
                 <li>
                   <Link
                     to="/guesses"
@@ -65,7 +68,7 @@ const Header = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu p-4 w-80 min-h-full bg-base-200">
+          <ul className="menu p-4 w-80 min-h-full bg-base-200 relative max-w-lg">
             <li>
               <Link to="/guesses" className="block p-2 hover:bg-gray-200">
                 My Guesses
