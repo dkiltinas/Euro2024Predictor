@@ -1,10 +1,25 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleMenuItemClick = (path) => {
+    setDrawerOpen(false);
+    navigate(path);
+  };
+
   return (
     <header>
       <div className="drawer z-10 h-24">
-        <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+        <input
+          id="my-drawer-3"
+          type="checkbox"
+          className="drawer-toggle"
+          checked={drawerOpen}
+          onChange={() => setDrawerOpen(!drawerOpen)}
+        />
         <div className="drawer-content flex flex-col">
           <div className="w-full navbar bg-customBlue">
             <div className="flex-none lg:hidden">
@@ -30,7 +45,7 @@ const Header = () => {
             </div>
             <Link to="/">
               <div>
-                <h2 className="h-20 w-34 text-3xl font-bold text-slate-200 mt-8 pl-8">
+                <h2 className="h-20 w-34 text-3xl font-bold text-slate-200 mt-8 pl-8 ml-12">
                   EuroGuess
                 </h2>
               </div>
@@ -76,19 +91,28 @@ const Header = () => {
           ></label>
           <ul className="menu p-4 w-80 min-h-full bg-base-200 relative max-w-lg text-base font-semibold">
             <li>
-              <Link to="/guesses" className="block p-4 hover:bg-yellow-500">
+              <button
+                onClick={() => handleMenuItemClick("/guesses")}
+                className="block p-4 hover:bg-yellow-500 text-left w-full"
+              >
                 My Guesses
-              </Link>
+              </button>
             </li>
             <li>
-              <Link to="/results" className="block p-4 hover:bg-yellow-500">
+              <button
+                onClick={() => handleMenuItemClick("/results")}
+                className="block p-4 hover:bg-yellow-500 text-left w-full"
+              >
                 Match Results
-              </Link>
+              </button>
             </li>
             <li>
-              <Link to="/" className="block p-4 hover:bg-yellow-500">
+              <button
+                onClick={() => handleMenuItemClick("/")}
+                className="block p-4 hover:bg-yellow-500 text-left w-full"
+              >
                 Upcoming Matches
-              </Link>
+              </button>
             </li>
           </ul>
         </div>
